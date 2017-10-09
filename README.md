@@ -1,2 +1,2 @@
 # project16
-Password generator (attempt)
+A very basic password generator
