@@ -303,6 +303,11 @@ namespace ConsoleApplication16
 						{
 							uchar1rnd[a] = rnd.Next(0, 15);
 						}
+
+						if (uchar1counter > 13)
+						{
+							uchar1counter = 0;
+						}
 						pwdstr[y] = ucharab1[uchar1rnd[0 + uchar1counter]];
 						uchar1counter++;
 					}
@@ -313,6 +318,11 @@ namespace ConsoleApplication16
 						for (int a = 0; a < sym2rnd.Length; a++)
 						{
 							sym2rnd[a] = rnd.Next(0, 13);
+						}
+
+						if (sym2counter > 11)
+						{
+							sym2counter = 0;
 						}
 						pwdstr[y] = symbolab2[sym2rnd[0 + sym2counter]];
 						sym2counter++;
@@ -325,6 +335,11 @@ namespace ConsoleApplication16
 						{
 							uchar2rnd[a] = rnd.Next(0, 11);
 						}
+
+						if (uchar2counter > 9)
+						{
+							uchar2counter = 0;
+						}
 						pwdstr[y] = ucharab2[uchar2rnd[0 + uchar2counter]];
 						uchar2counter++;
 					}
@@ -336,7 +351,12 @@ namespace ConsoleApplication16
 						{
 							sym1rnd[a] = rnd.Next(0, 17);
 						}
-						pwdstr[y] = ucharab1[sym1rnd[0] + sym1counter];
+
+						if (sym1counter > 15)
+						{
+							sym1counter = 0;
+						}
+						pwdstr[y] = symbolab1[sym1rnd[0] + sym1counter];
 						sym1counter++;
 					}
 
@@ -346,6 +366,11 @@ namespace ConsoleApplication16
 						for (int a = 0; a < lchar2rnd.Length; a++)
 						{
 							lchar2rnd[a] = rnd.Next(0, 15);
+						}
+
+						if (lchar2counter > 13)
+						{
+							lchar2counter = 0;
 						}
 						pwdstr[y] = lcharab2[lchar2rnd[0 + lchar2counter]];
 						lchar2counter++;
@@ -358,6 +383,11 @@ namespace ConsoleApplication16
 						{
 							num1rnd[a] = rnd.Next(0, 10);
 						}
+
+						if (num1counter > 13)
+						{
+							num1counter = 0;
+						}
 						pwdstr[y] = numab1[num1rnd[0 + num1counter]].ToString();
 						num1counter++;
 					}
@@ -368,6 +398,11 @@ namespace ConsoleApplication16
 						for (int a = 0; a < lchar1rnd.Length; a++)
 						{
 							lchar1rnd[a] = rnd.Next(0, 10);
+						}
+
+						if (lchar1counter > 8)
+						{
+							lchar1counter = 0;
 						}
 						pwdstr[y] = lcharab1[lchar1rnd[0 + lchar1counter]];
 						lchar1counter++;
@@ -380,6 +415,11 @@ namespace ConsoleApplication16
 						{
 							num2rnd[a] = rnd.Next(0, 10);
 						}
+
+						if (num2counter > 8)
+						{
+							num2counter = 0;
+						}
 						pwdstr[y] = numab2[num2rnd[0] + num2counter].ToString();
 						num2counter++;
 					}
@@ -390,8 +430,15 @@ namespace ConsoleApplication16
 			//////////											SUBPART 2										  //////////
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			StreamWriter sw = new StreamWriter("E:/project16/pwd.txt");
-			sw.WriteLine("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}{12}{13}{14}{15}", pwdstr[0], pwdstr[1], pwdstr[2], pwdstr[3], pwdstr[4], pwdstr[5], pwdstr[6], pwdstr[7], pwdstr[8], pwdstr[9], pwdstr[10], pwdstr[11], pwdstr[12], pwdstr[13], pwdstr[14], pwdstr[15]);
+			
+			Console.WriteLine("Please input the path where the text file shall be created");
+			string path = Console.ReadLine();
+
+			StreamWriter sw = new StreamWriter(path);
+			for (int i = 0; i < pwdstr.Length; i++)
+			{
+				sw.Write("{0}", pwdstr[i]);
+			}
 			sw.Close();
 
 			Console.ReadKey();
